@@ -34,7 +34,7 @@ const handleDeleteTask = (ev) => {
     return (
         <>
         <div className="flex-container">
-            <div><h1>To Do List</h1></div>
+            <div><h1 className="title">To Do List</h1></div>
             <div className="list-note">        
                 <form onKeyDown={handleForm}>
                     <input 
@@ -42,10 +42,11 @@ const handleDeleteTask = (ev) => {
                     placeholder="What needs to be done?"
                     onChange={e => setInput(e.target.value)}
                     value={input}
+                    className="input"
                     />
                 </form>
             {/* Render the list by mapping each input value and adding it into a <li> element with its own click to delete */}
-                <ul>{
+                <ul className="unordered-list">{
                     list.map((value, i) =>
                     <div>
                         <div  className="li-item">
