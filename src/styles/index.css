@@ -52,6 +52,7 @@ ul {
 li:hover + .deleteBtn, .deleteBtn:hover{
     color:red;
     transition: 1s;
+    cursor:pointer;
 }
 
 .items-left{

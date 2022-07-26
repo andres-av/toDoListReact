@@ -49,7 +49,7 @@ const handleDeleteTask = (ev) => {
                     list.map((value, i) =>
                     <div>
                         <div  className="li-item">
-                            <li key={i} id={i} className="hr">{value}</li>
+                            <li key={uuidv4()} id={i}>{value}</li>
                             <div onClick={handleDeleteTask} className="deleteBtn">X</div>
                         </div>
                         <hr />
