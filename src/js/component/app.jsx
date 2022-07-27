@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
+// Import components
+import ItemsLeft from "./ItemsLeft.jsx";
+
 
 // Declare Component
 const App = () => {
@@ -50,7 +53,7 @@ const handleDeleteTask = (ev) => {
                     list.map((value, i) =>
                     <div>
                         <div  className="li-item">
-                            <li key={uuidv4()} id={i}>{value}</li>
+                            <li key={i} id={i}>{value}</li>
                             <div onClick={handleDeleteTask} className="deleteBtn">X</div>
                         </div>
                         <hr />
@@ -58,11 +61,7 @@ const handleDeleteTask = (ev) => {
                     )}
                 </ul>
             </div>
-            <div className="items-left">
-                <p>{list.length} items left</p>
-            </div>
-            <div className="page-one"></div>
-            <div className="page-two"></div>
+            <ItemsLeft list={list}/>
         </div>
         </>
     )
