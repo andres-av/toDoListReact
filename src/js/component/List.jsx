@@ -6,10 +6,11 @@ const List = ({list , onDelete}) => {
         <>
             {/* Render the list by mapping each input value and adding it into a <li> element with its own click to delete */}
             <ul className="unordered-list">{
-                list.map((value, i) =>
-                    <div>
+                list.map((task) =>
+                    <div key={task.id}>
                         <div className="li-item">
-                            <li key={i} id={i}>{value}<div id={i} onClick={onDelete} className="deleteBtn">X</div></li>
+                            <li>{task.text}</li>
+                            <div onClick={() => onDelete(task.id)} className="deleteBtn">X</div>
                         </div>
                         <hr />
                     </div>
