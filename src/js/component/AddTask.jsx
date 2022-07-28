@@ -15,7 +15,6 @@ const AddTask = ({ onAdd }) => {
                 return
             }
             onAdd({text});
-
             setText('');
         }
     };
