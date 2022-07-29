@@ -14,7 +14,7 @@ const AddTask = ({ onAdd }) => {
                 alert('Please add a task');
                 return
             }
-            onAdd({text});
+            onAdd(text);
             setText('');
         }
     };
@@ -24,7 +24,7 @@ const AddTask = ({ onAdd }) => {
             <input 
             type="text" 
             placeholder="What needs to be done?"
-            onChange={(e) => setText(e.target.value)}
+            onChange={(e) => setText(e.currentTarget.value)}
             value={text}
             className="input"
             />
