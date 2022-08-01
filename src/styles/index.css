@@ -20,6 +20,7 @@ body{
 .title {
     font-family: 'Montserrat', sans-serif;
     color: rgb(247,121,125);
+    font-size: 4em;
 }
 
 /* Includes input form and the created tasks */
