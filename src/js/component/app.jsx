@@ -15,54 +15,58 @@ const App = () => {
     const [list, setList] = useState([]);
 
     // Server interaction: 
+    const getTasks = () => {fetch('https://assets.breatheco.de/apis/fake/todos/user/andres-av')
+    .then((resp) => resp.json())
+    .then((task) => setList(task))}
 
     useEffect(() => {
-        fetch('https://assets.breatheco.de/apis/fake/todos/user/andres-av')
-        .then((resp) => resp.json())
-        .then((task) => setList(task))
+        getTasks();
     }, []);
 
     // Function to add task and ID into list usState array:
     const addTask = (task) => {
         const newTask = {label: task, done: false };
-        setList([...list, newTask]);
+        // setList([...list, newTask]);
         fetch(`https://assets.breatheco.de/apis/fake/todos/user/andres-av`, 
         {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify(list)
+            body: JSON.stringify([...list, newTask])
         })
+        .then((resp) => {if(resp.ok){getTasks()}});
     };
 
     // Function to delete each task, called by the onClick event on each <li>
     const handleDeleteTask = (i) => {
         const listToBeDeleted = [...list];
         listToBeDeleted.splice(i, 1);
-        let deletedList = setList(listToBeDeleted);
+        // let deletedList = setList(listToBeDeleted);
         fetch(`https://assets.breatheco.de/apis/fake/todos/user/andres-av`, 
         {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify(deletedList)
+            body: JSON.stringify(listToBeDeleted)
         })
+        .then((resp) => {if(resp.ok){getTasks()}});
     };
 
     // // Function to delete, Clear All tasks
     const handleClear = () => {
         const newList = [{label: "No tasks have been added", done: false }];
-        let clearedList = setList(newList);
+        // let clearedList = setList(newList);
         fetch(`https://assets.breatheco.de/apis/fake/todos/user/andres-av`, 
         {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify(clearedList)
+            body: JSON.stringify(newList)
         })
+        .then((resp) => {if(resp.ok){getTasks()}});
     };
 
 // Render component
