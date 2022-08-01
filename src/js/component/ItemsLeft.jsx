@@ -10,9 +10,6 @@ const ItemsLeft = ({list , onClear}) => {
                 <button onClick={onClear} className="clearBtn">Clear All Tasks</button>
                 </div>
             </div>
-            {/* Small rectangles at bottom to make it look like post-it notes */}
-            <div className="page-one"></div>
-            <div className="page-two"></div>
         </>
     )
 }; 
